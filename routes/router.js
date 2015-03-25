@@ -9,30 +9,30 @@ Router.configure({
 
 PostsListController = RouteController.extend({
   template: 'postsList',
-  increment: 5,
-  postsLimit: function() {
-    return parseInt(this.params.postsLimit) || this.increment;
-  },
-  findOptions: function() {
-    return {sort: this.sort, limit: this.postsLimit()};
-  },
-  subscriptions: function() {
-    this.postsSub = Meteor.subscribe('posts', this.findOptions());
-  },
-  posts: function() {
-    return Posts.find({}, this.findOptions());
-  },
-  data: function() {
-    var self = this;
-    return {
-      posts: self.posts(),
-      ready: self.postsSub.ready,
-      nextPath: function() {
-        if (self.posts().count() === self.postsLimit())
-          return self.nextPath();
-      }
-    };
-  }
+  // increment: 5,
+  // postsLimit: function() {
+  //   return parseInt(this.params.postsLimit) || this.increment;
+  // },
+  // findOptions: function() {
+  //   return {sort: this.sort, limit: this.postsLimit()};
+  // },
+  // subscriptions: function() {
+  //   this.postsSub = Meteor.subscribe('posts', this.findOptions());
+  // },
+  // posts: function() {
+  //   return Posts.find({}, this.findOptions());
+  // },
+  // data: function() {
+  //   var self = this;
+  //   return {
+  //     posts: self.posts(),
+  //     ready: self.postsSub.ready,
+  //     nextPath: function() {
+  //       if (self.posts().count() === self.postsLimit())
+  //         return self.nextPath();
+  //     }
+  //   };
+  // }
 });
 
 NewPostsController = PostsListController.extend({

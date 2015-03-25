@@ -11,10 +11,17 @@ Meteor.publish('singlePost', function(id) {
   return Posts.find(id);
 });
 
+Meteor.publish('problem', function(options) {
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return Problems.find({}, options);
+});
 
-Meteor.publish('comments', function(postId) {
-  check(postId, String);
-  return Comments.find({postId: postId});
+Meteor.publish('singleProblem', function(id) {
+  check(id, String);
+  return Problem.find(id);
 });
 
 Meteor.publish('notifications', function() {
