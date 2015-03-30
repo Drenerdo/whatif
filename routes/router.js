@@ -8,31 +8,31 @@ Router.configure({
 });
 
 PostsListController = RouteController.extend({
-  template: 'postsList',
-  // increment: 5,
-  // postsLimit: function() {
-  //   return parseInt(this.params.postsLimit) || this.increment;
-  // },
-  // findOptions: function() {
-  //   return {sort: this.sort, limit: this.postsLimit()};
-  // },
-  // subscriptions: function() {
-  //   this.postsSub = Meteor.subscribe('posts', this.findOptions());
-  // },
-  // posts: function() {
-  //   return Posts.find({}, this.findOptions());
-  // },
-  // data: function() {
-  //   var self = this;
-  //   return {
-  //     posts: self.posts(),
-  //     ready: self.postsSub.ready,
-  //     nextPath: function() {
-  //       if (self.posts().count() === self.postsLimit())
-  //         return self.nextPath();
-  //     }
-  //   };
-  // }
+  template: 'dashboard',
+  increment: 5,
+  postsLimit: function() {
+    return parseInt(this.params.postsLimit) || this.increment;
+  },
+  findOptions: function() {
+    return {sort: this.sort, limit: this.postsLimit()};
+  },
+  subscriptions: function() {
+    this.postsSub = Meteor.subscribe('posts', this.findOptions());
+  },
+  posts: function() {
+    return Posts.find({}, this.findOptions());
+  },
+  data: function() {
+    var self = this;
+    return {
+      posts: self.posts(),
+      ready: self.postsSub.ready,
+      nextPath: function() {
+        if (self.posts().count() === self.postsLimit())
+          return self.nextPath();
+      }
+    };
+  }
 });
 
 NewPostsController = PostsListController.extend({
@@ -49,6 +49,18 @@ Router.route('/', {
 
 Router.route('copyright', {
   name: 'copyright'
+});
+
+Router.route('ideaForm', {
+  name: 'ideaForm'
+});
+
+Router.route('quickForm', {
+  name: 'quickForm'
+});
+
+Router.route('selection', {
+  name: 'selection'
 });
 
 Router.route('/new/:postsLimit?', {name: 'newPosts'});
@@ -91,3 +103,4 @@ var requireLogin = function() {
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});
 Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
+Router.onBeforeAction(requireLogin, {only: 'ideaForm'});

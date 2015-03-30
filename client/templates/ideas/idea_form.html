@@ -1,0 +1,18 @@
+<template name="ideaForm">
+	<form class="form-vertical" role="form">
+		<h1>Deep Thought</h1>
+		<div class="form-group">
+			<label for>The Problem</label>
+			<textarea class="form-control" name="problem" type="text" value="{{problem}}" placeholder="Type your issue"></textarea>
+		</div>
+		<div class="form-group">
+			<label for>The Law</label>
+			<textarea class="form-control" name="law" type="text" value="{{law}}" placeholder="Type your issue"></textarea>
+		</div>
+		<div class="form-group">
+			<label for>The Response</label>
+			<textarea class="form-control" name="response" type="text" value="{{response}}" placeholder="Type your issue"></textarea>
+		</div>
+		<input type="submit" value="Submit" class="btn btn-success"/>
+	</form>
+</template>

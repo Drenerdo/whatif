@@ -1,0 +1,22 @@
+<template name="ideaItem">
+	<div class="row-fluid idea" {{attributes}}>
+		<div class="inline-block pull-left align-center vote-controls">
+			{{#if currentUser}}
+				<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-up"></a>
+			{{/if}}
+			<span class="vote-count">{{votesCount}}</span>
+			{{#if currentUser}}
+				<a href="#" class="btn btn-default btn-xs fa fa-chevron-down vote-down"></a>
+			{{/if}}
+		</div>
+		<div class="idea-details">
+			{{#if ownIdea }}
+				<a href="{{ideaFor 'ideaEdit'}}" title="{{problem}}" class="btn btn-default btn-sm pull-right post-edit"><i class="fa fa-pencil"></i></a>
+			{{/if}}
+			<a href="{{problem}}" title="{{problem}}" class="idea-problem" target="_blank">{{problem}}</a>
+		</div>
+			<small>
+				<span class="idea-created-at">{{formatDate createdAt}}</span>
+			</small>
+	</div>
+</template>

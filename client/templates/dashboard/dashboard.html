@@ -1,44 +1,17 @@
-<template name="copyright">
-  <div class="jumbotron">
+<template name="dashboard">
+    <div class="jumbotron">
       <div class="container">
-        <h1>Copyright</h1>
+        <h1>Welcome to What(If)</h1>
         <p>Congress enacted the Digital Millenium Copyright Act (DMCA) in 1998 in an effort to keep legislation on par with the development of the Internet. At the time, the Act was praised as “landmark legislation” as it provided a means of protection for copyrighted work, for which previous Copyright laws were not equipped to handle. With more than a decade passing since the enactment of the DMCA, technology has continued to evolve, leading to a compromise on the effectiveness of the act. Two areas in great need of reform are the Counter Notice Provision (§ 512(g)(3)) and the Anti-Circumvention Provision (§1201).</p>
+        <center><p><a class="btn btn-primary btn-lg" href="{{pathFor 'selection'}}" role="button">Submit Your idea</a></p></center>
       </div>
-  </div>
-
-  <div class="col-sm-3">
-    <div class="list-group">
-      <ul class="list-group">
-          <li class="list-group-item">
-            <p>Featured Article #1</p>
-            {{> votes}}
-            <p>{{> postItem}}</p>
-          </li>
-      </ul>
     </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="list-group">
-      <ul class="list-group">
-          <li class="list-group-item">
-            <p>Featured Article #2</p>
-            {{> votes}}
-            <p>{{> postItem}}</p>
-          </li>
-      </ul>
-    </div>
-  </div>
 
-
-    <div class="col-sm-8">
+    <div class="col-sm-4">
       <div class="list-group">
+        <h1>Top Influencers</h1>
         <ul class="list-group">
             <li class="list-group-item">
-              <center><p>Article List</p></center>
-              {{> postItem}}
-              {{> postItem}}
-              {{> postItem}}
-              <li class="list-group-item">
               <span class="badge">{{> votes}}</span>
                 Cras justo odio
             </li>
@@ -54,8 +27,35 @@
               <span class="badge">{{> votes}}</span>
                 Cras justo odio
             </li>
+        </ul>
+      </div>
+
+      <div class="list-group">
+        <h1>Top Influencers</h1>
+        <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge">14</span>
+                Cras justo odio
+            </li>
+            <li class="list-group-item">
+              <span class="badge">14</span>
+                Cras justo odio
+            </li>
+            <li class="list-group-item">
+              <span class="badge">14</span>
+                Cras justo odio
+            </li>
+            <li class="list-group-item">
+              <span class="badge">14</span>
+                Cras justo odio
             </li>
         </ul>
       </div>
     </div>
+
+
+    <p><a class="btn btn-primary btn-lg" href="{{pathFor 'copyright'}}" role="button">Copyright</a></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Data Privacy</a></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Environmental Policy</a></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Food and Drug Policy</a></p>
 </template>

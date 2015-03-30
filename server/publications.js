@@ -24,6 +24,19 @@ Meteor.publish('singleProblem', function(id) {
   return Problem.find(id);
 });
 
+Meteor.publish('idea', function(options){
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return Ideas.find({}, options);
+});
+
+Meteor.publish('singleIdea', function(id) {
+  check(id, String);
+  return Problem.find(id);
+});
+
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
