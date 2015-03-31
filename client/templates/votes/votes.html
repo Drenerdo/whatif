@@ -1,9 +1,11 @@
 <template name="votes">
-	<div class="input-group spinner">
-      <input type="text" class="form-control" value="42">
-      <div class="input-group-btn-vertical">
-        <button class="btn btn-default"><i class="fa fa-caret-up"></i></button>
-        <button class="btn btn-default"><i class="fa fa-caret-down"></i></button>
-      </div>
-    </div>
+	<div class="inline-block pull-left align-center vote-controls">
+		{{#if currentUser }}
+			<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-up"></a>
+		{{/if}}
+		<span class="votes-count">{{votesCount}}</span>
+		{{#if currentUser }}
+			<a href="#" class="btn btn-default btn-xs fa fa-chevron-down vote-down"></a>
+		{{/if}}
+	</div>
 </template>

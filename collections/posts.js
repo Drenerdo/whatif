@@ -15,7 +15,7 @@ Posts.deny({
 Posts.deny({
   update: function(userId, post, fieldNames, modifier) {
     var errors = validatePost(modifier.$set);
-    return errors.title || errors.url;
+    return errors.title || errors.url || errors.message;
   }
 });
 
@@ -27,6 +27,9 @@ validatePost = function (post) {
   
   if (!post.url)
     errors.url =  "Please fill in a URL";
+
+  if (!post.message)
+    errors.message = "Please type your solution to this problem"
 
   return errors;
 }
