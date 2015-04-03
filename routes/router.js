@@ -42,6 +42,42 @@ NewPostsController = PostsListController.extend({
   }
 });
 
+ProblemsListController = RouteController.extend({
+  increment: 5,
+  problemsLimit: function() {
+    return parseInt(this.params.problemsLimit) || this.increment;
+  },
+  findOptions: function() {
+    return {sort: this.sort, limit: this.problemsLimit()};
+  },
+  subscriptions: function() {
+    this.problemsSub = Meteor.subscribe('problems', this.findOptions());
+  },
+  problems: function() {
+    return Problems.find({}, this.findOptions());
+  },
+  data: function() {
+    var self = this;
+    return {
+      problems: self.problems(),
+      ready: self.problemsSub.ready,
+      nextPath: function() {
+        if(self.problems().count() === self.problemsLimit())
+          return self.nextpath();
+      }
+    };
+  }
+});
+
+NewProblemsController = ProblemsListController.extend({
+  sort: {submitted: -1, _id: -1},
+  nextPath: function() {
+    return Router.routes.newProblems.path({problemsLimit: this.problemsLimit() + this.increment})
+  }
+});
+
+Router.route('/new/:problemsLimit?', {name: ''})
+
 Router.route('/', {
   name: 'home',
   controller: NewPostsController
@@ -61,6 +97,10 @@ Router.route('quickForm', {
 
 Router.route('selection', {
   name: 'selection'
+});
+
+Router.route('article', {
+  name: 'article'
 });
 
 Router.route('/new/:postsLimit?', {name: 'newPosts'});
@@ -103,4 +143,5 @@ var requireLogin = function() {
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});
 Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
+Router.onBeforeAction(requireLogin, {only: 'problemSubmit'});
 Router.onBeforeAction(requireLogin, {only: 'ideaForm'});

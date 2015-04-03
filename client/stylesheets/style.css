@@ -18,3 +18,12 @@ body {
 .align-right { text-align: right; }
 .align-center { text-align: center; }
 .align-left { text-align: left; }
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}

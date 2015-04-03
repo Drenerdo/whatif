@@ -1,0 +1,10 @@
+<template name="problemsList">
+	<div class="col-xs-12">
+		{{#each problemsWithRank}}
+			{{> probemItem}}
+		{{/each}}
+		{{#if nextPath}}
+			<a href="{{nextPath}}" class="load-more btn btn-block btn-primary">Load More</a>
+		{{/if}}
+	</div>
+</template>
