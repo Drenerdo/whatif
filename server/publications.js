@@ -11,7 +11,7 @@ Meteor.publish('singlePost', function(id) {
   return Posts.find(id);
 });
 
-Meteor.publish('problem', function(options) {
+Meteor.publish('problems', function(options) {
   check(options, {
     sort: Object,
     limit: Number
@@ -24,7 +24,7 @@ Meteor.publish('singleProblem', function(id) {
   return Problem.find(id);
 });
 
-Meteor.publish('idea', function(options){
+Meteor.publish('ideas', function(options){
   check(options, {
     sort: Object,
     limit: Number

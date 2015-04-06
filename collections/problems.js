@@ -1,8 +1,8 @@
 Problems = new Meteor.Collection('problems');
 
 Problems.allow({
-	update: function(userId, problem) { return ownsDocument(userId, problem); },
-	remove: function(userId, problem) { return ownsDocument(userId, problem); },
+	update: function(userId, problems) { return ownsDocument(userId, problem); },
+	remove: function(userId, problems) { return ownsDocument(userId, problem); },
 });
 
 Problems.deny({
@@ -12,7 +12,7 @@ Problems.deny({
 });
 
 Meteor.methods({
-	problem: function(problemAttributes){
+	problems: function(problemAttributes){
 		var user = Meteor.user();
 		var problemWithSameLink = Problems.findOne({url: problemAttributes.url});
 
@@ -25,22 +25,20 @@ Meteor.methods({
 		if(problemAttributes.url && problemWithSameLink)
 			throw new Meteor.Error(302, "This URL has already been posted", problemWithSameLink._id);
 
-		var problem = _.extend(_.pick(problemAttributes, 'message', 'url'), {
+		var problems = _.extend(_.pick(problemAttributes, 'message', 'url'), {
 			userId: user._id,
 			author: user.username,
 			votes: 0,
 			voters: [],
-			createdAt: moment().format("X"),
-			updatedAt: moment().format("X")
 		});
 
-		var problemId = Problems.insert(problem);
+		var problemsId = Problems.insert(problem);
 
-		return problemId;
+		return problemsId;
 	},
 
 	votes: function(id, vote) {
-		var problem = Problems.findOne(id);
+		var problems = Problems.findOne(id);
 		var user = Meteor.user();
 
 		if(!user)

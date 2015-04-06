@@ -3,8 +3,8 @@ Template.problemNew.events({
 		e.preventDefault();
 
 		var problem = {
-			url: $(e.target).find('[name=url]').val(),
-			message: $(e.target).find('[name=message]').val()
+			message: $(e.target).find('[name=message]').val(),
+			url: $(e.target).find('[name=url]').val()
 		}
 
 		Meteor.call('problem', problem, function(error, id){

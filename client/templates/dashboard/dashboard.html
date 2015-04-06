@@ -1,16 +1,17 @@
 <template name="dashboard">
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome to What(If)</h1>
+        <center><h1>Welcome to What(If)</h1></center>
         <p>Congress enacted the Digital Millenium Copyright Act (DMCA) in 1998 in an effort to keep legislation on par with the development of the Internet. At the time, the Act was praised as “landmark legislation” as it provided a means of protection for copyrighted work, for which previous Copyright laws were not equipped to handle. With more than a decade passing since the enactment of the DMCA, technology has continued to evolve, leading to a compromise on the effectiveness of the act. Two areas in great need of reform are the Counter Notice Provision (§ 512(g)(3)) and the Anti-Circumvention Provision (§1201).</p>
         <center><p><a class="btn btn-primary btn-lg" href="{{pathFor 'selection'}}" role="button">Submit Your idea</a></p></center>
       </div>
     </div>
 
     <div class="col-sm-4">
-      <div class="list-group">
-        <h1>Top Influencers</h1>
-        <ul class="list-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">Top Influencers</div>
+          <div class="panel-body">
+            <ul class="list-group">
             <li class="list-group-item">
               <span class="badge">1000</span>
                 Andre Smith
@@ -32,34 +33,88 @@
                 <p>Suitefolio - Developer</p>
             </li>
         </ul>
+          </div>
       </div>
 
-      <div class="list-group">
-        <h1>Recently Updated</h1>
-        <ul class="list-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">Recently Updated</div>
+          <div class="panel-body">
             <li class="list-group-item">
-              {{> votes}}
+              <span>{{> problemItem}}</span>
                 Copyright
+                <p>Reforming Synch Licensing on YT</p>
             </li>
             <li class="list-group-item">
-              {{> votes}}
+              <span>{{> problemItem}}</span>
                 Corporate
+                <p>Equity crowdfunding under the jobs act</p>
             </li>
             <li class="list-group-item">
-              {{> votes}}
+              <span>{{> problemItem}}</span>
                 Privacy
+                <p>Near Field Communication Technology</p>
             </li>
             <li class="list-group-item">
-              {{> votes}}
+              <span>{{> problemItem}}</span>
                 Immigration
+                <p>The Startup Visa</p>
             </li>
-        </ul>
+            <li class="list-group-item">
+              <span>{{> problemItem}}</span>
+                Immigration
+                <p>Recorded Streams post Aereo</p>
+            </li>
+          </div>
       </div>
     </div>
 
+    <!-- <p><a class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">Copyright</a></p>
+    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Data Privacy</small></a></p>
+    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Environmental Policy</small></a></p>
+    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Food and Drug Policy</small></a></p> -->
 
-    <p><a class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">Copyright</a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button">Data Privacy</a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button">Environmental Policy</a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button">Food and Drug Policy</a></p>
+    <div>
+      <p>
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}">
+          <small>Copyright</small>
+        </button>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small><p>Corporate Law and</p>
+            <p>Startup Finance</p></small>
+        </button>
+      </p>
+    </div>
+
+    <div>
+      <p>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Data Privacy</small>
+        </button>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Trade Secrets</small>
+        </button>
+      </p>
+    </div>
+
+    <div>
+      <p>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Environmental Policy</small>
+        </button>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Access to Justice</small>
+        </button>
+      </p>
+    </div>
+
+    <div>
+      <p>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Food and Drug Policy</small>
+        </button>
+        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+          <small>Immigration</small>
+        </button>
+      </p>
+    </div>
 </template>

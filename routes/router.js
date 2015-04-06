@@ -7,42 +7,8 @@ Router.configure({
   }
 });
 
-PostsListController = RouteController.extend({
-  template: 'dashboard',
-  increment: 5,
-  postsLimit: function() {
-    return parseInt(this.params.postsLimit) || this.increment;
-  },
-  findOptions: function() {
-    return {sort: this.sort, limit: this.postsLimit()};
-  },
-  subscriptions: function() {
-    this.postsSub = Meteor.subscribe('posts', this.findOptions());
-  },
-  posts: function() {
-    return Posts.find({}, this.findOptions());
-  },
-  data: function() {
-    var self = this;
-    return {
-      posts: self.posts(),
-      ready: self.postsSub.ready,
-      nextPath: function() {
-        if (self.posts().count() === self.postsLimit())
-          return self.nextPath();
-      }
-    };
-  }
-});
-
-NewPostsController = PostsListController.extend({
-  sort: {submitted: -1, _id: -1},
-  nextPath: function() {
-    return Router.routes.newPosts.path({postsLimit: this.postsLimit() + this.increment})
-  }
-});
-
 ProblemsListController = RouteController.extend({
+  template: 'dashboard',
   increment: 5,
   problemsLimit: function() {
     return parseInt(this.params.problemsLimit) || this.increment;
@@ -63,11 +29,13 @@ ProblemsListController = RouteController.extend({
       ready: self.problemsSub.ready,
       nextPath: function() {
         if(self.problems().count() === self.problemsLimit())
-          return self.nextpath();
+          return self.nextPath();
       }
     };
   }
 });
+
+
 
 NewProblemsController = ProblemsListController.extend({
   sort: {submitted: -1, _id: -1},
@@ -76,11 +44,9 @@ NewProblemsController = ProblemsListController.extend({
   }
 });
 
-Router.route('/new/:problemsLimit?', {name: ''})
-
 Router.route('/', {
   name: 'home',
-  controller: NewPostsController
+  controller: NewProblemsController
 });
 
 Router.route('copyright', {
@@ -95,6 +61,10 @@ Router.route('quickForm', {
   name: 'quickForm'
 });
 
+Router.route('problemNew', {
+  name: 'problemNew'
+});
+
 Router.route('selection', {
   name: 'selection'
 });
@@ -103,31 +73,20 @@ Router.route('article', {
   name: 'article'
 });
 
-Router.route('/new/:postsLimit?', {name: 'newPosts'});
+Router.route('/new/:problemsLimit?', {name: 'newProblems'});
 
-Router.route('/best/:postsLimit?', {name: 'bestPosts'});
+Router.route('/best/:problemsLimit?', {name: 'bestProblems'});
 
 
-Router.route('/posts/:_id', {
-  name: 'postPage',
+Router.route('/problems/:_id', {
+  name: 'problemPage',
   waitOn: function() {
     return [
-      Meteor.subscribe('singlePost', this.params._id),
-      Meteor.subscribe('comments', this.params._id)
+      Meteor.subscribe('singleProblem', this.params._id)
     ];
   },
-  data: function() { return Posts.findOne(this.params._id); }
+  data: function() { return Problems.findOne(this.params._id); }
 });
-
-Router.route('/posts/:_id/edit', {
-  name: 'postEdit',
-  waitOn: function() {
-    return Meteor.subscribe('singlePost', this.params._id);
-  },
-  data: function() { return Posts.findOne(this.params._id); }
-});
-
-Router.route('/submit', {name: 'postSubmit'});
 
 var requireLogin = function() {
   if (! Meteor.user()) {
@@ -141,7 +100,6 @@ var requireLogin = function() {
   }
 }
 
-Router.onBeforeAction('dataNotFound', {only: 'postPage'});
-Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
-Router.onBeforeAction(requireLogin, {only: 'problemSubmit'});
+Router.onBeforeAction('dataNotFound', {only: 'problemPage'});
+Router.onBeforeAction(requireLogin, {only: 'problemNew'});
 Router.onBeforeAction(requireLogin, {only: 'ideaForm'});

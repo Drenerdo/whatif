@@ -1,18 +1,41 @@
 <template name="ideaForm">
 	<form class="form-vertical" role="form">
-		<h1>Deep Thought</h1>
+		<center><h1>Deep Thought</h1></center>
+		<hr>
+		<center><p>In Just a few sentences, how is the law failing to meet the needs of emerging tech and new ventures?(Required)</p></center>
 		<div class="form-group">
 			<label for>The Problem</label>
+			<p>In at most a few sentences, how is the law failing to meet the needs of emerging tech and new ventures?(REQUIRED)<i class="fa fa-question-circle"></i></p>
 			<textarea class="form-control" name="problem" type="text" value="{{problem}}" placeholder="Type your issue"></textarea>
 		</div>
 		<div class="form-group">
 			<label for>The Law</label>
+			<p>Which top-level of law most needs reform in order to address the problem?(Required)<i class="fa fa-question-circle"></i></p>
+			<div class="container">
+  			<form role="form">
+    			<div class="form-group">
+      				<select class="form-control" id="sel1" placeholder="Pick one!">
+        				<option>Copyright</option>
+        				<option>Data Privacy</option>
+        				<option>Environmental Policy</option>
+        				<option>Food and Drug Policy</option>
+        				<option>Corporate Law and Startup Finance</option>
+        				<option>Trade Secrets</option>
+        				<option>Access to Justice</option>
+        				<option>Immigration</option>
+      				</select>
+      				<br>
+    				</div>
+  				</form>
+			</div>
+			<p>Explain as much of the relevant controlling law as possible, including statutes, regulations, and/or caselaw.<i class="fa fa-question-circle"></i></p>
 			<textarea class="form-control" name="law" type="text" value="{{law}}" placeholder="Type your issue"></textarea>
 		</div>
 		<div class="form-group">
 			<label for>The Response</label>
+			<p>What has been the effect of the problem in the marketplace? Have past(i.e, not ongoing) efforts been made to respond to it?<i class="fa fa-question-circle"></i></p>
 			<textarea class="form-control" name="response" type="text" value="{{response}}" placeholder="Type your issue"></textarea>
 		</div>
-		<input type="submit" value="Submit" class="btn btn-success"/>
+		<center><input type="submit" value="Submit" class="btn btn-success"/></center>
 	</form>
 </template>

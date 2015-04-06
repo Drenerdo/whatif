@@ -1,9 +1,9 @@
-<template name="problemsList">
+<template name="problemsItem">
 	<div class="col-xs-12">
 		{{#each problemsWithRank}}
-			{{> probemItem}}
+			{{> problemItem}}
 		{{/each}}
-		{{#if nextPath}}
+		{{# if nextPath}}
 			<a href="{{nextPath}}" class="load-more btn btn-block btn-primary">Load More</a>
 		{{/if}}
 	</div>

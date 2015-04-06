@@ -1,4 +1,4 @@
-var PROBLEM_HEIGHT= 80;
+var POST_HEIGHT = 80;
 var Positions = new Meteor.Collection(null);
 
 Template.problemItem.helpers({
@@ -14,26 +14,25 @@ Template.problemItem.helpers({
 		var v = this.votes;
 		if(isNaN(v))
 			v = 0;
-
 		return v;
 	},
 	attributes: function() {
-		var problem = _.extend({}, Positions.findOne({problemId: this._id}), this);
+		var post = _.extend({}, Positions.findOne({problemId: this._id}), this);
 		var newPosition = problem._rank * PROBLEM_HEIGHT;
 		var attributes = {};
 
-		if(_.isUndefined(problem.position)){
-			attributes.class = 'Problem invisible';
+		if(_.isUndefined(problem.positions)) {
+			attributes.class = 'problem invisible';
 		} else {
 			var delta = problem.position - newPosition;
 			attributes.style = "top: " + delta + "px";
 
 			if(delta === 0)
-				attributes.class = "Problem animated"
+				attributes.class = "problem animate"
 		}
 
-		Meteor.setTimeout(function(){
-			Positions.upsert({problemId: problem._id}, {$set: {problem: newPosition}})
+		Meteor.setTimeout(function() {
+			Positions.upsert({problemId: problem._id}, {$set: {position: newPosition}})
 		});
 
 		return attributes;
@@ -41,6 +40,7 @@ Template.problemItem.helpers({
 });
 
 Template.problemItem.events({
+
 	'click .vote-up': function(e) {
 		e.preventDefault();
 		Meteor.call('vote', this._id, 1, function(error, id){

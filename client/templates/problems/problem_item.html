@@ -1,11 +1,19 @@
 <template name="problemItem">
 	<div class="row-fluid problem" {{attributes}}>
-		{{#if currentUser }}
-			<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-up"></a>
-		{{/if}}
-		<span class="votes-count">{{votesCount}}</span>
-		{{#if currentUser }}
-			<a href="#" class="btn btn-default btn-xs fa fa-chevron-down vote-down"></a>
-		{{/if}}
+		<div class="inline-block pull-left align-center vote-controls">
+			{{# if currentUser }}
+				<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-up"></a>
+			{{/if}}
+			<span class="votes-count">{{votesCount}}</span>
+			{{# if currentUser }}
+				<a href="#" class="btn btn-default btn-xs fa fa-chevron-down vote-down"></a>
+			{{/if}}
+		</div>
+		<div class="problem-details">
+			{{#if ownProblem}}
+				<a href="#" title="#" class="btn btn-default btn-sm pull-right problem-edit"><i class="fa fa-pencil"></i></a>
+			{{/if}}
+			<a href="{{url}}" title="{{url}}" class="problem-message" target="blank">{{message}}</a>
+		</div>
 	</div>
 </template>
