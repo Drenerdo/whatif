@@ -1,0 +1,17 @@
+<template name="ideasList">
+	<div class="ideas page">
+		<div class="wrapper">
+			{{#each ideas}}
+				{{> ideaItem}}
+			{{/each}}
+		</div>
+
+		{{#if nextPath}}
+			<a class="load-more" href="{{nextPath}}">Load More</a>
+		{{else}}
+			{{#unless ready}}
+				{{> spinner}}
+			{{/unless}}
+		{{/if}}
+	</div>
+</template>

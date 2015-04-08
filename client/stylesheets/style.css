@@ -2,6 +2,10 @@
 
 .col-sm-3 {float: left;}
 
+/*.btn {
+  margin-left: 40px;
+}*/
+
 body {
 	padding-top: 50px;
 }
@@ -20,13 +24,17 @@ body {
 .align-left { text-align: left; }
 
 .btn-xlarge {
-    padding: 36px 28px;
-    font-size: 22px;
+    padding: 80px 80px;
+    font-size: 10px;
     line-height: normal;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
-    border-radius: 8px;
+    border-radius: 0px;
+    margin-left: 80px !important;
+    margin-top: 10px;
+
 }
+
 
 /* Sidebar */
 body,html{

@@ -35,12 +35,47 @@ ProblemsListController = RouteController.extend({
   }
 });
 
-
-
 NewProblemsController = ProblemsListController.extend({
   sort: {submitted: -1, _id: -1},
   nextPath: function() {
     return Router.routes.newProblems.path({problemsLimit: this.problemsLimit() + this.increment})
+  }
+});
+
+
+// Idea Section
+IdeasListController = RouteController.extend({
+  template: '',
+  increment: 5,
+  ideasLimit: function() {
+    return parseInt(this.params.ideasLimit) || this.increment;
+  },
+  findOptions: function() {
+    return {sort: this.sort, limit: this.ideasLimit()};
+  },
+  subscriptions: function() {
+    this.ideasSub = Meteor.subscribe('ideas', this.findOptions());
+  },
+  ideas: function() {
+    return Ideas.find({}, this.findOptions);
+  },
+  data: function() {
+    var self = this;
+    return {
+      ideas: self.ideas(),
+      ready: self.ideasSub.ready,
+      nextPath: function() {
+        if(self.ideas().count() === self.ideasLimit())
+          return self.nextPath();
+      }
+    };
+  }
+});
+
+NewIdeasController = IdeasListController.extend({
+  sort: {submitted: -1, _id: -1},
+  nextPath: function() {
+    return Router.routes.newIdeas.path({ideasLimit: this.ideasLimit() + this.increment})
   }
 });
 
@@ -73,9 +108,7 @@ Router.route('article', {
   name: 'article'
 });
 
-Router.route('/new/:problemsLimit?', {name: 'newProblems'});
-
-Router.route('/best/:problemsLimit?', {name: 'bestProblems'});
+// Router.route('/submit', {name: 'ideaSubmit'});
 
 
 Router.route('/problems/:_id', {

@@ -1,6 +1,3 @@
-var POST_HEIGHT = 80;
-var Positions = new Meteor.Collection(null);
-
 Template.problemItem.helpers({
 	ownProblem: function() {
 		return this.userId === Meteor.userId();
@@ -17,7 +14,7 @@ Template.problemItem.helpers({
 		return v;
 	},
 	attributes: function() {
-		var post = _.extend({}, Positions.findOne({problemId: this._id}), this);
+		var problem = _.extend({}, Positions.findOne({problemId: this._id}), this);
 		var newPosition = problem._rank * PROBLEM_HEIGHT;
 		var attributes = {};
 

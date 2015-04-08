@@ -6,10 +6,12 @@
 standard-app-packages
 twbs:bootstrap
 underscore
-iron:router@1.0.0-rc.1
+iron:router
+monbro:iron-router-breadcrumb
 sacha:spin
 accounts-password
 ian:accounts-ui-bootstrap-3
 audit-argument-checks
 natestrauser:font-awesome@4.1.0
 kevohagan:sweetalert
+codechimera:meteor-bootstrap-sweetalert

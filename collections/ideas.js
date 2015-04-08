@@ -1,62 +1,71 @@
-Ideas = new Meteor.Collection('ideas');
+Ideas = new Mongo.Collection('ideas');
 
 Ideas.allow({
-	update: function(userId, idea) { return ownsDocument(userId, idea);},
-	remove: function(userId, idea) { return ownsDocument(userId, idea);}
+	update: function(userId, idea) { return ownsDocument(userId, idea); },
+	remove: function(userId, idea) { return ownsDocument(userId, idea); },
 });
 
 Ideas.deny({
-	update: function(userId, idea, fields) {
-		return(_.without(fields, 'problem', 'law', 'response'). length > 0);
+	update: function(userId, idea, fieldNames) {
+		return (_.without(fieldNames, 'url', 'message', 'problem', 'law', 'response').length > 0);
 	}
 });
 
+Ideas.deny({
+	update: function(userId, idea, fieldNames, modifier) {
+		var errors = validateIdea(modifier.$set);
+		return errors.message || errors.url || errors.problem || errors.law || errors.response;
+	}
+});
+
+validateIdea = function(idea) {
+	var errors = {};
+
+	if(!idea.message)
+		errors.message = "Please enter in a solution to this problem";
+
+	if(!idea.url)
+		errors.url = "Please fill in a URL";
+
+	return errors;
+}
+
 Meteor.methods({
-	idea: function(ideaAttributes) {
-		var user = Meteor.user();
+	ideaInsert: function(ideaAttributes) {
+		check(this.userId, String);
+		check(ideaAttributes, {
+			message: String,
+			problem: String,
+			law: String,
+			response: String,
+			url: String
+		});
+
+		var errors = validateIdea(ideaAttributes);
+		if(errors.message || errors.url || errors.problem || errors.law || errors.response)
+			throw new Meteor.Error('invalid-idea', "You must set a message and URL for your idea");
+
 		var ideaWithSameLink = Ideas.findOne({url: ideaAttributes.url});
+		if(ideaWithSameLink) {
+			return {
+				ideaExists: true,
+				_id: ideaWithSameLink._id
+			}
+		}
 
-		if(!user)
-			throw new Meteor.Error(401, "You need to login to submit a idea"); 
-		if(!ideaAttributes.url && postWithSameLink)
-			throw new Meteor.Error(302, 'This url has already been posted', postWithSameLink._id);
-
-		var idea = _.extend(_.pick(ideaAttributes, 'problem', 'law', 'response'), {
+		var user = Meteor.user();
+		var idea = _.extend(ideaAttributes, {
 			userId: user._id,
 			author: user.username,
-			votes: 0,
-			voters: [],
-			commentsCount: 0,
-			createdAt: moment().format("X"),
-			updatedAt: moment().format("X")
+			submitted: new Date(),
+			upvoters: [],
+			votes: 0
 		});
 
 		var ideaId = Ideas.insert(idea);
 
-		return ideaId;
+		return {
+			_id: ideaId
+		};
 	},
-
-	vote: function(id, vote) {
-		var idea = Ideas.findOne(id);
-		var user = Meteor.user();
-
-		if(!user)
-			throw new Meteor.Error(401, "You need to login to vote");
-
-		if(!idea) {
-			throw new Meteor.Error(422, "Couldn't find the idea");
-		} else {
-			if(vote > 0) {
-				Votes.update({_id: idea._id, voters: {$ne: user._id}}, {$addToSet: {voters: user._id}, $inc:{ votes: vote}}, function(error){
-					if(error)
-						throw new Meteor.Error(422, error.reason);
-				})
-			} else {
-				Ideas.update({_id: idea._id, votes: {$in: [user._id]}}, {$pull: {voters: user._id}, $inc: {votes: vote}}, function(error){
-					if(error)
-						throw new Meteor.Error(422, error.reason);
-				})
-			}
-		}
-	}
 });

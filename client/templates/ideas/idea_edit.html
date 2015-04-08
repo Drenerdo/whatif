@@ -1,9 +1,21 @@
 <template name="ideaEdit">
-	<div class="col-xs-12">
-		<div class="page-header">
-			<a href="#" title="{{url}}" class="delete btn btn-danger pull-right"><i class="fa fa-trash-o">&nbsp;</i>Delete</a>
-			<h1 class="inline">Edit Idea</h1>
+	<form class="main form page">
+		<div class="form-group {{errorClass 'url'}}">
+			<label class="control-label" for="url">URL</label>
+			<div class="controls">
+				<input name="url" id="url" type="text" value="{{url}}" placeholder="Your URL" class="form-control"/>
+				<span class="help-block">{{errorMessage 'url'}}</span>
+			</div>
 		</div>
-		{{> ideaForm}}
-	</div>
+		<div class="form-group {{errorClass 'message'}}">
+			<label class="control-label" for="message">Message</label>
+			<div class="controls">
+				<input name="message" id="message" type="text" value="{{message}}" placeholder="Please your solution to this issue here" class="form-control"/>
+				<span class="help-block">{{errorMessage 'message'}}</span>
+			</div>
+		</div>
+		<input type="submit" value="Submit" class="btn btn-primary submit"/>
+		<hr/>
+		<a class="btn btn-danger delete" href="#">Delete idea</a>
+	</form>
 </template>

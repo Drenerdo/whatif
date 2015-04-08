@@ -25,7 +25,7 @@ Meteor.methods({
 		if(problemAttributes.url && problemWithSameLink)
 			throw new Meteor.Error(302, "This URL has already been posted", problemWithSameLink._id);
 
-		var problems = _.extend(_.pick(problemAttributes, 'message', 'url'), {
+		var problem = _.extend(_.pick(problemAttributes, 'message', 'url'), {
 			userId: user._id,
 			author: user.username,
 			votes: 0,

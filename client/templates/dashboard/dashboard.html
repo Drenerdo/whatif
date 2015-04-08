@@ -41,11 +41,6 @@
           <div class="panel-body">
             <li class="list-group-item">
               <span>{{> problemItem}}</span>
-                Copyright
-                <p>Reforming Synch Licensing on YT</p>
-            </li>
-            <li class="list-group-item">
-              <span>{{> problemItem}}</span>
                 Corporate
                 <p>Equity crowdfunding under the jobs act</p>
             </li>
@@ -68,53 +63,45 @@
       </div>
     </div>
 
-    <!-- <p><a class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">Copyright</a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Data Privacy</small></a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Environmental Policy</small></a></p>
-    <p><a class="btn btn-primary btn-xlarge" href="#" role="button"><small>Food and Drug Policy</small></a></p> -->
-
-    <div>
-      <p>
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}">
+    <div class="row">
+      <div class="col-6">
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
           <small>Copyright</small>
         </button>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
-          <small><p>Corporate Law and</p>
-            <p>Startup Finance</p></small>
-        </button>
-      </p>
-    </div>
 
-    <div>
-      <p>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
-          <small>Data Privacy</small>
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
+          <small>Startup Formation</small>
         </button>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+      </div>
+
+      <div class="col-6">
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
+          <small>Data Policy</small>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
           <small>Trade Secrets</small>
         </button>
-      </p>
-    </div>
+      </div>
 
-    <div>
-      <p>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
-          <small>Environmental Policy</small>
+      <div class="col-6">
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
+          <small>Environmental</small>
         </button>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
-          <small>Access to Justice</small>
-        </button>
-      </p>
-    </div>
 
-    <div>
-      <p>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
-          <small>Food and Drug Policy</small>
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
+          <small>Access To Justice</small>
         </button>
-        <button type="button" class="btn btn-primary btn-xlarge" href="#">
+      </div>
+
+      <div class="col-6">
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
+          <small>Food and Drug</small>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
           <small>Immigration</small>
         </button>
-      </p>
+      </div>
     </div>
 </template>

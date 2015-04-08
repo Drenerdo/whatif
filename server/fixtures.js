@@ -87,7 +87,7 @@ if (Problems.find().count() === 0) {
   var sacha = Meteor.users.findOne(sachaId);
 
   var telescopeId = Problems.insert({
-    title: 'Introducing Telescope',
+    message: 'Introducing Telescope',
     userId: sacha._id,
     author: sacha.profile.name,
     url: 'http://sachagreif.com/introducing-telescope/',
@@ -96,7 +96,7 @@ if (Problems.find().count() === 0) {
   });
 
   Problems.insert({
-    title: 'Meteor',
+    message: 'Meteor',
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://meteor.com',
@@ -105,7 +105,7 @@ if (Problems.find().count() === 0) {
   });
 
   Problems.insert({
-    title: 'The Meteor Book',
+    message: 'The Meteor Book',
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://themeteorbook.com',
@@ -115,7 +115,7 @@ if (Problems.find().count() === 0) {
 
   for (var i = 0; i < 10; i++) {
     Problems.insert({
-      title: 'Test post #' + i,
+      message: 'Test post #' + i,
       author: sacha.profile.name,
       userId: sacha._id,
       url: 'http://google.com/?q=test-' + i,
