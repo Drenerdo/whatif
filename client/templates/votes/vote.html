@@ -1,9 +1,15 @@
 <template name="vote">
-	<div class="row-fluid problem">
-		<div class="inline-block pull-left align-center vote-controls">
-				<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-up"></a>
-			<span class="votes-count">{{votesCount}}</span>
-				<a href="#" class="btn btn-default btn-xs fa fa-chevron-up vote-down"></a>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" id="increaseButton" class="btn btn-success">+</button>
+                </span>
+                <input type="text" class="form-control" id="vote" placeholder="Vote" /> 
+                <span class="input-group-btn">
+                    <button type="button" id="decreaseButton" class="btn btn-danger">-</button>
+                </span>
+            </div>
+        </div>
+    </div>
 </template>
