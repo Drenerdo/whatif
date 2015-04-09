@@ -1,6 +1,6 @@
 .col-sm-4 {float: right;}
 
-.col-sm-3 {float: left;}
+.col-sm-3 {float: left; }
 
 /*.btn {
   margin-left: 40px;
@@ -56,7 +56,7 @@ body,html{
 
     .main{
       position: absolute;
-      width: calc(100% - 40px); 
+      width: calc(100% - 40px);
       margin-right: 40px;
       float: right;
     }
@@ -74,7 +74,7 @@ body,html{
       width: 100%;
       margin-right: 0px;
     }
-    
+
     nav.sidebar a{
       padding-right: 13px;
     }
@@ -126,7 +126,7 @@ body,html{
       opacity: 0;
     }
   }
-   
+
   @media (min-width: 1330px) {
 
     .main{

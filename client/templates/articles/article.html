@@ -1,50 +1,54 @@
 <template name="article">
   <div class="container-fluid" id="main">
     <div class="row">
-      <div class="col-xs-8" id="left">
-    
-        <center><p><a class="btn btn-primary btn-lg" href="{{pathFor 'problemNew'}}" role="button">Solve This Problem</a></p></center>
-      
-      <!-- item list -->
-        <div class="panel panel-default">
-          <div class="panel-heading">{{> vote}} The Problem: SOCIAL MEDIA AND OPHANED WORKS.</div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-        <hr>
-      
-        <div class="panel panel-default">
-          <div class="panel-heading">The Law:</div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-        <hr>
-      
-        <div class="panel panel-default">
-          <div class="panel-heading">The Response:</div>
-        </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-        Aliquam in felis sit amet augue.</p>
-      
-        <hr>
-      
-        <div class="panel panel-default">
-          <div class="panel-heading">Proposed Solutions:</div>
-        </div>
-        <p> {{> problemItem}}</p>
+      <div class="col-sm-8">
+        <div class="list-group">
+          <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                  <p>{{> problemItem}} The Problem: SOCIAL MEDIA AND ORPHANED WORKS</p>
+                  <p><small>Who owns the copyright in user generated content on social media? Who owns a
+                  photgraph that a user posts on his Facebook account and makes it public? While social
+                  media platform cannot claim ownership of such content, but instead requires a license to use
+                  the content, issues arise when third parties reuse the content</small></p>
+                </div>
 
-        <div class="panel panel-default">
-          <div class="panel-heading">Additional Resources:</div>
+                <div class="row">
+                  <p>The Law: Social media and orphaned works</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Copyright protection of fashion designs</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Fair use of gossip bloggers</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Cloud computing and recording stream post-Aereo</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Copyright trolling and Youtube's ContentID</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Royalty rate reform for subscriptions streaming services</p>
+                </div>
+
+                <div class="row">
+                  <p>The Problem: Fair trade royalty deals for musicians from developing countries</p>
+                </div>
+
+                <div class="row">
+                  <p>Proposed Solutions:</p>
+
+                  <p>{{> problemItem}}</p>
+                </div>
+            </li>
+          </ul>
         </div>
-        <p>(List of external links to reference materials)</p>     
       </div>
     </div>
   </div>
