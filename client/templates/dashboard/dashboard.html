@@ -2,7 +2,8 @@
     <div class="jumbotron">
       <div class="container">
         <center><h1>Welcome to What(If)</h1></center>
-        <p>Congress enacted the Digital Millenium Copyright Act (DMCA) in 1998 in an effort to keep legislation on par with the development of the Internet. At the time, the Act was praised as “landmark legislation” as it provided a means of protection for copyrighted work, for which previous Copyright laws were not equipped to handle. With more than a decade passing since the enactment of the DMCA, technology has continued to evolve, leading to a compromise on the effectiveness of the act. Two areas in great need of reform are the Counter Notice Provision (§ 512(g)(3)) and the Anti-Circumvention Provision (§1201).</p>
+        <center><p>What(If) is a new digital legal innovation commons for entrepreneurial lawyers, students, academics, and other interested observers.  Our common purpose is open and creative information sharing, presenting law-and-technology problems and solutions to lay the foundation of a crowdsourcing platform for next-generation policy proposals.  Define and empower the lawyer-entrepreneur by reading, responding, and adding your ideas.  We want to change the world by answering this question: where does the law fail to keep up with the needs of new technologies and ventures?</p></center>
+        <center><p>Have a policy problem in mind?  A loose thread for us to research?  It all starts here.</p></center>
         <center><p><a class="btn btn-primary btn-lg" href="{{pathFor 'selection'}}" role="button">Submit Your idea</a></p></center>
       </div>
     </div>
@@ -13,24 +14,24 @@
           <div class="panel-body">
             <ul class="list-group">
             <li class="list-group-item">
-              <span class="badge">1000</span>
+              <span class="badge">100</span>
                 Andre Smith
-                <p>Suitefolio - Developer</p>
+                <p>CEO at Suitefolio Inc.</p>
             </li>
             <li class="list-group-item">
-              <span class="badge">99</span>
-                Andre Smith
-                <p>Suitefolio - Developer</p>
-            </li>
-            <li class="list-group-item">
-              <span class="badge">93</span>
-                Andre Smith
-                <p>Suitefolio - Developer</p>
+              <span class="badge">95</span>
+                Mick Mallard
+                <p>Privacy Professor at Brooklyn Law School</p>
             </li>
             <li class="list-group-item">
               <span class="badge">92</span>
-                Andre Smith
-                <p>Suitefolio - Developer</p>
+                Warren Mack
+                <p>General Counsel at Sass, Inc.</p>
+            </li>
+            <li class="list-group-item">
+              <span class="badge">89</span>
+                Geraldo Rivera
+                <p>Innovation Catalyst at Fox News Channel</p>
             </li>
         </ul>
           </div>
@@ -41,23 +42,23 @@
           <div class="panel-body">
             <li class="list-group-item">
               <span>{{> problemItem}}</span>
-                Corporate
-                <p>Equity crowdfunding under the jobs act</p>
+                Copyright
+                <p>Synch Licensing on Youtube</p>
             </li>
             <li class="list-group-item">
               <span>{{> problemItem}}</span>
-                Privacy
-                <p>Near Field Communication Technology</p>
+                Corporation & LLCs
+                <p>Equity Crowdfuncing under the JOBS Act</p>
+            </li>
+            <li class="list-group-item">
+              <span>{{> problemItem}}</span>
+                Information Privacy
+                <p>Near-Field Communication Technology</p>
             </li>
             <li class="list-group-item">
               <span>{{> problemItem}}</span>
                 Immigration
                 <p>The Startup Visa</p>
-            </li>
-            <li class="list-group-item">
-              <span>{{> problemItem}}</span>
-                Immigration
-                <p>Recorded Streams post Aereo</p>
             </li>
           </div>
       </div>
@@ -65,43 +66,28 @@
 
     <div class="row">
       <div class="col-6">
-        <button type="button" class="btn btn-primary btn-xlarge" role="button">
-          <p><small>Copyright</small></p>
-        </button>
 
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Startup Formation</small>
-        </button>
+        <a href="{{pathFor 'copyright'}}" class="btn btn-primary btn-xlarge" role="button">Copyright</a>
+
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Corporations & LLCs </a>
       </div>
 
       <div class="col-6">
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Data Policy</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Information Privacy</a>
 
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Trade Secrets</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Patent & Trade Secrets </a>
       </div>
 
       <div class="col-6">
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Environmental</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Immigration</a>
 
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Access To Justice</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Trademark </a>
       </div>
 
       <div class="col-6">
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Food and Drug</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Environmental</a>
 
-        <button type="button" class="btn btn-primary btn-xlarge" href="{{pathFor 'copyright'}}" role="button">
-          <small>Immigration</small>
-        </button>
+        <a href="#" class="btn btn-primary btn-xlarge" role="button">Food & Drug </a>
       </div>
     </div>
 </template>
